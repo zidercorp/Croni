@@ -21,7 +21,7 @@ namespace Croni
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -29,11 +29,16 @@ namespace Croni
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<HomeTabbedPage, HomeTabbedPageViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
 
             containerRegistry.RegisterSingleton<IDatabaseConnection, DatabaseConnection>();
             containerRegistry.RegisterSingleton<IDatabase, Database>();
             containerRegistry.RegisterSingleton<ITransactionRepository, TransactionRepository>();
+            containerRegistry.RegisterForNavigation<DashboardPage, DashboardPageViewModel>();
+            containerRegistry.RegisterForNavigation<AccountsPage, AccountsPageViewModel>();
+            containerRegistry.RegisterForNavigation<TransactionsPage, TransactionsPageViewModel>();
+            containerRegistry.RegisterForNavigation<CategoriesPage, CategoriesPageViewModel>();
         }
     }
 }

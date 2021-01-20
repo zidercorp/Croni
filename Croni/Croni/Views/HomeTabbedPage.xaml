@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="Croni.Views.HomeTabbedPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:fonts="clr-namespace:Croni.Common.Fonts;assembly=Croni.Common"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:views="clr-namespace:Croni.Views"
+    android:TabbedPage.IsSwipePagingEnabled="True"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <TabbedPage.Children>
+        <views:DashboardPage>
+            <views:DashboardPage.IconImageSource>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static fonts:FASolidFontFamily.Home}"
+                    Size="32"
+                    Color="Crimson" />
+            </views:DashboardPage.IconImageSource>
+        </views:DashboardPage>
+        <views:AccountsPage>
+            <views:AccountsPage.IconImageSource>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static fonts:FASolidFontFamily.ChartBar}"
+                    Size="32"
+                    Color="Crimson" />
+            </views:AccountsPage.IconImageSource>
+        </views:AccountsPage>
+        <views:CategoriesPage>
+            <views:CategoriesPage.IconImageSource>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static fonts:FASolidFontFamily.List}"
+                    Size="32"
+                    Color="Crimson" />
+            </views:CategoriesPage.IconImageSource>
+        </views:CategoriesPage>
+        <views:TransactionsPage>
+            <views:TransactionsPage.IconImageSource>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static fonts:FASolidFontFamily.SearchDollar}"
+                    Size="32"
+                    Color="Crimson" />
+            </views:TransactionsPage.IconImageSource>
+        </views:TransactionsPage>
+    </TabbedPage.Children>
+</TabbedPage>
