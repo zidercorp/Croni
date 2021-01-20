@@ -2,9 +2,9 @@
 
 namespace Croni.Views
 {
-    public partial class MainPage : MasterDetailPage
+    public partial class AccountsPage : ContentPage
     {
-        public MainPage()
+        public AccountsPage()
         {
             InitializeComponent();
         }

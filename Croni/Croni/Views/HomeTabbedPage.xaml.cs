@@ -2,9 +2,9 @@
 
 namespace Croni.Views
 {
-    public partial class MainPage : MasterDetailPage
+    public partial class HomeTabbedPage : TabbedPage
     {
-        public MainPage()
+        public HomeTabbedPage()
         {
             InitializeComponent();
         }
