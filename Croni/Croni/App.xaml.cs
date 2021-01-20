@@ -1,3 +1,5 @@
+using Croni.Data.Database;
+using Croni.Data.Repositories;
 using Croni.ViewModels;
 using Croni.Views;
 using Prism;
@@ -28,6 +30,10 @@ namespace Croni
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+
+            containerRegistry.RegisterSingleton<IDatabaseConnection, DatabaseConnection>();
+            containerRegistry.RegisterSingleton<IDatabase, Database>();
+            containerRegistry.RegisterSingleton<ITransactionRepository, TransactionRepository>();
         }
     }
 }
