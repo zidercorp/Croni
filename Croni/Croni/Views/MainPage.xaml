@@ -18,12 +18,5 @@
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
-    <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <views:HomeTabbedPage />
-            </x:Arguments>
-        </NavigationPage>
-    </MasterDetailPage.Detail>
 
 </MasterDetailPage>

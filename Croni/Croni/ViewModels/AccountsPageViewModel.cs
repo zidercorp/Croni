@@ -10,6 +10,7 @@ using System.Linq;
 using Croni.Common.Enums;
 using Croni.Services;
 using Prism;
+using Croni.Views;
 
 namespace Croni.ViewModels
 {
@@ -20,6 +21,7 @@ namespace Croni.ViewModels
         private readonly Lazy<IAccountService> _lazyAccountService;
 
         private IAccountService _accountService => _lazyAccountService.Value;
+        private IToolbarService _toolbarService;
 
         #endregion
 
@@ -35,8 +37,6 @@ namespace Croni.ViewModels
 
         private ObservableCollection<Account> _debts = new ObservableCollection<Account>();
 
-        public event EventHandler IsActiveChanged;
-
         public ObservableCollection<Account> Debts
         {
             get => _debts;
@@ -50,8 +50,17 @@ namespace Croni.ViewModels
                                      IToolbarService toolbarService) : base(navigationService)
         {
             _lazyAccountService = lazyAccountService;
+            _toolbarService = toolbarService;
 
             toolbarService.AccountsAction = AddAccount;
+
+            IsActiveChanged += AccountsPageViewModel_IsActiveChanged;
+        }
+
+        private void AccountsPageViewModel_IsActiveChanged(object sender, EventArgs e)
+        {
+            if (IsActive)
+                _toolbarService.SelectedTab = ViewName.Accounts;
         }
 
         private void AddAccount()

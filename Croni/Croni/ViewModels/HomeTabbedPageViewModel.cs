@@ -1,4 +1,6 @@
-﻿using Croni.Services;
+﻿using Croni.Common.Fonts;
+using Croni.Services;
+using Croni.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -15,21 +17,26 @@ namespace Croni.ViewModels
         private readonly IToolbarService _toolbarService;
         public ICommand ActionCommand { get; }
 
-        private ContentPage _selectedPage;
-        public ContentPage SelectedPage
+        private ViewName _selectedTab;
+
+        public ViewName SelectedTab
         {
-            get => _selectedPage;
-            set
-            {
-                SetProperty(ref _selectedPage, value);
-            }
+            get => _selectedTab;
+            set => SetProperty(ref _selectedTab, value);
         }
 
         public HomeTabbedPageViewModel(INavigationService navigationService,
                                        IToolbarService toolbarService) : base(navigationService)
         {
             _toolbarService = toolbarService;
+
+            _toolbarService.SelectedTabChanged += _toolbarService_SelectedTabChanged;
             ActionCommand = new DelegateCommand(ExecuteAction);
+        }
+
+        private void _toolbarService_SelectedTabChanged(object sender, EventArgs e)
+        {
+            SelectedTab = _toolbarService.SelectedTab;
         }
 
         private void ExecuteAction()

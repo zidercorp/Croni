@@ -13,6 +13,7 @@ namespace Croni.Services
         Action DashboardAction { get; set; }
         Action TransactionsAction { get; set; }
         ViewName SelectedTab { get; set; }
+        event EventHandler SelectedTabChanged;
         void ExecuteAction();
     }
 }

@@ -35,7 +35,7 @@ namespace Croni
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("MainPage");
+            await NavigationService.NavigateAsync("MainPage/NavigationPage/HomeTabbedPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
