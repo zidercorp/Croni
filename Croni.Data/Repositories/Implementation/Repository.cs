@@ -39,12 +39,12 @@ namespace Croni.Data.Repositories
             return await AttemptAndRetry(() => _dbConnection.GetAsyncConnection().ExecuteAsync(sqlText)).ConfigureAwait(false);
         }
 
-        public async Task<List<T>> Get()
+        public async Task<IList<T>> Get()
         {
             return await AttemptAndRetry(() => _dbConnection.GetAsyncConnection().Table<T>().ToListAsync()).ConfigureAwait(false);
         }
 
-        public async Task<List<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null)
+        public async Task<IList<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null)
         {
             return await AttemptAndRetry(async () =>
             {
@@ -80,7 +80,7 @@ namespace Croni.Data.Repositories
             return await AttemptAndRetry(() => _dbConnection.GetAsyncConnection().InsertAllAsync(list)).ConfigureAwait(false);
         }
 
-        public async Task<List<T>> Query(string query, params object[] args)
+        public async Task<IList<T>> Query(string query, params object[] args)
         {
             return await AttemptAndRetry(() => _dbConnection.GetAsyncConnection().QueryAsync<T>(query, args)).ConfigureAwait(false);
         }

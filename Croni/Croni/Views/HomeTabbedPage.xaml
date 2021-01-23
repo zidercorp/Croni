@@ -7,19 +7,23 @@
     xmlns:fonts="clr-namespace:Croni.Common.Fonts;assembly=Croni.Common"
     xmlns:prism="http://prismlibrary.com"
     xmlns:views="clr-namespace:Croni.Views"
+    Title="Home"
     android:TabbedPage.IsSwipePagingEnabled="True"
     android:TabbedPage.ToolbarPlacement="Bottom"
-    prism:ViewModelLocator.AutowireViewModel="True">
-    <TabbedPage.Children>
-        <views:DashboardPage>
-            <views:DashboardPage.IconImageSource>
+    prism:ViewModelLocator.AutowireViewModel="True"
+    CurrentPageChanged="TabbedPage_CurrentPageChanged">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ActionCommand}">
+            <ToolbarItem.IconImageSource>
                 <FontImageSource
                     FontFamily="FASolid"
-                    Glyph="{x:Static fonts:FASolidFontFamily.Home}"
-                    Size="32"
-                    Color="Crimson" />
-            </views:DashboardPage.IconImageSource>
-        </views:DashboardPage>
+                    Glyph="{x:Static fonts:FASolidFontFamily.Plus}"
+                    Size="15"
+                    Color="White" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </TabbedPage.ToolbarItems>
+    <TabbedPage.Children>
         <views:AccountsPage>
             <views:AccountsPage.IconImageSource>
                 <FontImageSource
@@ -29,6 +33,15 @@
                     Color="Crimson" />
             </views:AccountsPage.IconImageSource>
         </views:AccountsPage>
+        <views:DashboardPage>
+            <views:DashboardPage.IconImageSource>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static fonts:FASolidFontFamily.Home}"
+                    Size="32"
+                    Color="Crimson" />
+            </views:DashboardPage.IconImageSource>
+        </views:DashboardPage>
         <views:CategoriesPage>
             <views:CategoriesPage.IconImageSource>
                 <FontImageSource

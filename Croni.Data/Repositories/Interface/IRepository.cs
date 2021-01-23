@@ -9,9 +9,9 @@ namespace Croni.Data.Repositories
 {
     public interface IRepository<T> where T : class, new()
     {
-        Task<List<T>> Get();
+        Task<IList<T>> Get();
         Task<T> Get(string id);
-        Task<List<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null);
+        Task<IList<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null);
         Task<T> Get(Expression<Func<T, bool>> predicate);
         AsyncTableQuery<T> AsQueryable();
         Task<int> InsertItem(T entity);
@@ -19,7 +19,7 @@ namespace Croni.Data.Repositories
         Task<int> DeleteItem(T entity);
         Task<int> DeleteAllItems();
         Task<int> InsertAllItems(IEnumerable<T> list);
-        Task<List<T>> Query(string query, params object[] args);
+        Task<IList<T>> Query(string query, params object[] args);
         Task<int> Execute(string sqlText);
     }
 }

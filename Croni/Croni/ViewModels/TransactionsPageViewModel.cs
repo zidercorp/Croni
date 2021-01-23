@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Croni.ViewModels
 {
-    public class TransactionsPageViewModel : ViewModelBase
+    public class TransactionsPageViewModel : TabViewModelBase
     {
         public TransactionsPageViewModel(INavigationService navigationService) : base(navigationService)
         {

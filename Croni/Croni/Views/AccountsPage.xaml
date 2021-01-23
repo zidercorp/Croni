@@ -4,6 +4,67 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
     Title="Accounts"
     prism:ViewModelLocator.AutowireViewModel="True"
-    NavigationPage.HasNavigationBar="False" />
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <tabView:SfTabView x:Name="tabView" BackgroundColor="#f6f6f6">
+            <tabView:SfTabItem Title="ACCOUNTS">
+                <tabView:SfTabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Label HorizontalOptions="Start" Text="ACCOUNTS" />
+                            <Label HorizontalOptions="End" Text="Php 0" />
+                        </Grid>
+                        <CollectionView Grid.Row="1" ItemsSource="{Binding Accounts}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" />
+                                        <Label Text="{Binding Balance}" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="DEBTS">
+                <tabView:SfTabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Label HorizontalOptions="Start" Text="I OWE" />
+                            <Label HorizontalOptions="End" Text="Php 0" />
+                        </Grid>
+                    </Grid>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="FINANCES">
+                <tabView:SfTabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label HorizontalOptions="Start" Text="MY FINANCES" />
+                        <Label
+                            Grid.Row="2"
+                            BackgroundColor="Red"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Php 0.00" />
+                    </Grid>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+        </tabView:SfTabView>
+    </ContentPage.Content>
+</ContentPage>
