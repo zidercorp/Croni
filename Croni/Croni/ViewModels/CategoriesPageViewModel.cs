@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using Croni.Services;
+using Croni.Views;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -7,9 +9,25 @@ using System.Linq;
 
 namespace Croni.ViewModels
 {
-    public class CategoriesPageViewModel : ViewModelBase
+    public class CategoriesPageViewModel : TabViewModelBase
     {
-        public CategoriesPageViewModel(INavigationService navigationService) : base(navigationService)
+        private readonly IToolbarService _toolbarService;
+        public CategoriesPageViewModel(INavigationService navigationService,
+                                       IToolbarService toolbarService) : base(navigationService)
+        {
+            _toolbarService = toolbarService;
+            toolbarService.CategoriesAction = EditCategories;
+
+            IsActiveChanged += CategoriesPageViewModel_IsActiveChanged;
+        }
+
+        private void CategoriesPageViewModel_IsActiveChanged(object sender, EventArgs e)
+        {
+            if (IsActive)
+                _toolbarService.SelectedTab = ViewName.CategoriesPage;
+        }
+
+        private void EditCategories()
         {
 
         }

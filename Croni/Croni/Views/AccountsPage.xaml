@@ -4,6 +4,116 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
-    prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:sfButtons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
+    xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
     Title="Accounts"
-    NavigationPage.HasNavigationBar="False" />
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <sfButtons:SfRadioGroupKey x:Key="accountType" />
+    </ContentPage.Resources>
+    <sfPopup:SfPopupLayout IsOpen="{Binding PopupOpen}">
+        <sfPopup:SfPopupLayout.PopupView>
+            <sfPopup:PopupView
+                AcceptButtonText="OK"
+                AcceptCommand="{Binding PopupOKCommand}"
+                AppearanceMode="TwoButton"
+                DeclineButtonText="Cancel"
+                HeaderTitle="New Account">
+                <sfPopup:PopupView.PopupStyle>
+                    <sfPopup:PopupStyle
+                        AcceptButtonBackgroundColor="DimGray"
+                        AcceptButtonTextColor="White"
+                        DeclineButtonBackgroundColor="DimGray"
+                        DeclineButtonTextColor="White"
+                        FooterBackgroundColor="LightGray" />
+                </sfPopup:PopupView.PopupStyle>
+                <sfPopup:PopupView.ContentTemplate>
+                    <DataTemplate>
+                        <CollectionView ItemsSource="{Binding AccountTypeModels}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <sfButtons:SfRadioButton GroupKey="{StaticResource accountType}" IsChecked="{Binding IsSelected}" />
+                                        <StackLayout
+                                            Grid.Column="1"
+                                            Orientation="Vertical"
+                                            Spacing="0">
+                                            <Label Text="{Binding Name}" />
+                                            <Label Text="{Binding Description}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </DataTemplate>
+                </sfPopup:PopupView.ContentTemplate>
+            </sfPopup:PopupView>
+        </sfPopup:SfPopupLayout.PopupView>
+        <sfPopup:SfPopupLayout.Content>
+            <tabView:SfTabView x:Name="tabView" BackgroundColor="#f6f6f6">
+                <tabView:SfTabItem Title="ACCOUNTS">
+                    <tabView:SfTabItem.Content>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Label HorizontalOptions="Start" Text="ACCOUNTS" />
+                                <Label HorizontalOptions="End" Text="Php 0" />
+                            </Grid>
+                            <CollectionView Grid.Row="1" ItemsSource="{Binding Accounts}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Name}" />
+                                            <Label Text="{Binding Balance}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <tabView:SfTabItem Title="DEBTS">
+                    <tabView:SfTabItem.Content>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Label HorizontalOptions="Start" Text="I OWE" />
+                                <Label HorizontalOptions="End" Text="Php 0" />
+                            </Grid>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <tabView:SfTabItem Title="FINANCES">
+                    <tabView:SfTabItem.Content>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label HorizontalOptions="Start" Text="MY FINANCES" />
+                            <Label
+                                Grid.Row="2"
+                                BackgroundColor="Red"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Php 0.00" />
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+            </tabView:SfTabView>
+        </sfPopup:SfPopupLayout.Content>
+    </sfPopup:SfPopupLayout>
+</ContentPage>

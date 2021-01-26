@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using Croni.Services;
+using Prism.Ioc;
+using Xamarin.Forms;
 
 namespace Croni.Views
 {

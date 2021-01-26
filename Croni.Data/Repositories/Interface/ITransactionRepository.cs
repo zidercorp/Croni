@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Croni.Data.Repositories
 {
-    public interface ITransactionRepository
+    public interface ITransactionRepository : IRepository<Transaction>
     {
     }
 }

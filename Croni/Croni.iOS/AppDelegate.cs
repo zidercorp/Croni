@@ -1,6 +1,9 @@
 ﻿using Foundation;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.XForms.iOS.PopupLayout;
+using Syncfusion.XForms.iOS.TabView;
 using UIKit;
 
 
@@ -22,6 +25,9 @@ namespace Croni.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfTabViewRenderer.Init();
+            SfRadioButtonRenderer.Init();
+            SfPopupLayoutRenderer.Init();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
