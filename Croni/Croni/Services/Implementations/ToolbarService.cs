@@ -33,13 +33,13 @@ namespace Croni.Services
 
         public void ExecuteAction()
         {
-            if (SelectedTab == ViewName.Accounts)
+            if (SelectedTab == ViewName.AccountsPage)
                 AccountsAction?.Invoke();
-            else if (SelectedTab == ViewName.Categories)
+            else if (SelectedTab == ViewName.CategoriesPage)
                 CategoriesAction?.Invoke();
-            else if (SelectedTab == ViewName.Dashboard)
+            else if (SelectedTab == ViewName.DashboardPage)
                 DashboardAction?.Invoke();
-            else if (SelectedTab == ViewName.Transactions)
+            else if (SelectedTab == ViewName.TransactionsPage)
                 TransactionsAction?.Invoke();
         }
     }

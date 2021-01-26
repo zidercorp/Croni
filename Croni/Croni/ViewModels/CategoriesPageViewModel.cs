@@ -24,7 +24,7 @@ namespace Croni.ViewModels
         private void CategoriesPageViewModel_IsActiveChanged(object sender, EventArgs e)
         {
             if (IsActive)
-                _toolbarService.SelectedTab = ViewName.Categories;
+                _toolbarService.SelectedTab = ViewName.CategoriesPage;
         }
 
         private void EditCategories()

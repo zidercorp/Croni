@@ -23,7 +23,7 @@ namespace Croni.ViewModels
         private void TransactionsPageViewModel_IsActiveChanged(object sender, EventArgs e)
         {
             if (IsActive)
-                _toolbarService.SelectedTab = ViewName.Transactions;
+                _toolbarService.SelectedTab = ViewName.TransactionsPage;
         }
     }
 }

@@ -24,15 +24,6 @@
                     Color="Crimson" />
             </views:AccountsPage.IconImageSource>
         </views:AccountsPage>
-        <views:DashboardPage>
-            <views:DashboardPage.IconImageSource>
-                <FontImageSource
-                    FontFamily="FASolid"
-                    Glyph="{x:Static fonts:FASolidFontFamily.Home}"
-                    Size="32"
-                    Color="Crimson" />
-            </views:DashboardPage.IconImageSource>
-        </views:DashboardPage>
         <views:CategoriesPage>
             <views:CategoriesPage.IconImageSource>
                 <FontImageSource
@@ -51,5 +42,14 @@
                     Color="Crimson" />
             </views:TransactionsPage.IconImageSource>
         </views:TransactionsPage>
+        <views:DashboardPage>
+            <views:DashboardPage.IconImageSource>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static fonts:FASolidFontFamily.Home}"
+                    Size="32"
+                    Color="Crimson" />
+            </views:DashboardPage.IconImageSource>
+        </views:DashboardPage>
     </TabbedPage.Children>
 </TabbedPage>

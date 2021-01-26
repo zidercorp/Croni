@@ -11,6 +11,8 @@ using Croni.Common.Enums;
 using Croni.Services;
 using Prism;
 using Croni.Views;
+using System.Windows.Input;
+using Croni.Data.Models;
 
 namespace Croni.ViewModels
 {
@@ -43,6 +45,28 @@ namespace Croni.ViewModels
             set => SetProperty(ref _debts, value);
         }
 
+        private ObservableCollection<AccountTypeModel> _accountTypeModels = new ObservableCollection<AccountTypeModel>();
+
+        public ObservableCollection<AccountTypeModel> AccountTypeModels
+        {
+            get => _accountTypeModels;
+            set => SetProperty(ref _accountTypeModels, value);
+        }
+
+        private bool _popupOpen;
+
+        public bool PopupOpen
+        {
+            get => _popupOpen;
+            set => SetProperty(ref _popupOpen, value);
+        }
+
+        #endregion
+
+        #region Commands
+
+        public ICommand PopupOKCommand { get; }
+
         #endregion
 
         public AccountsPageViewModel(INavigationService navigationService,
@@ -54,27 +78,26 @@ namespace Croni.ViewModels
 
             toolbarService.AccountsAction = AddAccount;
 
+            PopupOKCommand = new DelegateCommand(OpenNewAccountPage);
+
             IsActiveChanged += AccountsPageViewModel_IsActiveChanged;
+        }
+
+        private async void OpenNewAccountPage()
+        {
+            var navigationParams = new NavigationParameters();
+            await NavigationService.NavigateAsync(nameof(ViewName.NewAccountPage), navigationParams, true, true);
         }
 
         private void AccountsPageViewModel_IsActiveChanged(object sender, EventArgs e)
         {
             if (IsActive)
-                _toolbarService.SelectedTab = ViewName.Accounts;
+                _toolbarService.SelectedTab = ViewName.AccountsPage;
         }
 
         private void AddAccount()
         {
-            var newAccount = new Account
-            {
-                Name = "BPI",
-                Balance = 1000,
-                AccountType = AccountType.Regular
-            };
-
-            _accountService.Insert(newAccount);
-
-            Accounts.Add(newAccount);
+            PopupOpen = true;
         }
 
         public async override void Initialize(INavigationParameters parameters)
@@ -91,11 +114,38 @@ namespace Croni.ViewModels
 
             if (accounts != null)
                 Debts = new ObservableCollection<Account>(debts);
+
+            var accountTypeList = new List<AccountTypeModel>
+            {
+                new AccountTypeModel
+                {
+                    Name = "Regular",
+                    Description ="Cash, card, ...",
+                    IsSelected = true
+                },
+                new AccountTypeModel
+                {
+                    Name = "Debt",
+                    Description ="Credit, mortgage, ..."
+                },
+                new AccountTypeModel
+                {
+                    Name = "Savings",
+                    Description = "Savings, goal, ..."
+                }
+            };
+
+            AccountTypeModels = new ObservableCollection<AccountTypeModel>(accountTypeList);
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+        }
+
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            base.OnNavigatedFrom(parameters);
         }
 
         public override void Destroy()

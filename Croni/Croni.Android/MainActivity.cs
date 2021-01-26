@@ -1,8 +1,10 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.XForms.Android.PopupLayout;
 
 namespace Croni.Droid
 {
@@ -18,6 +20,10 @@ namespace Croni.Droid
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            UserDialogs.Init(this);
+            SfPopupLayoutRenderer.Init();
+
             LoadApplication(new App(new AndroidInitializer()));
         }
 

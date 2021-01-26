@@ -6,9 +6,12 @@ namespace Croni.Views
 {
     public enum ViewName
     {
-        Accounts,
-        Categories,
-        Dashboard,
-        Transactions
+        MainPage,
+        HomeTabbedPage,
+        AccountsPage,
+        CategoriesPage,
+        DashboardPage,
+        TransactionsPage,
+        NewAccountPage
     }
 }

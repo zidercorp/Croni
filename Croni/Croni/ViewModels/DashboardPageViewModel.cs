@@ -23,7 +23,7 @@ namespace Croni.ViewModels
         private void DashboardPageViewModel_IsActiveChanged(object sender, EventArgs e)
         {
             if (IsActive)
-                _toolbarService.SelectedTab = ViewName.Dashboard;
+                _toolbarService.SelectedTab = ViewName.DashboardPage;
         }
     }
 }

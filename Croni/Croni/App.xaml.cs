@@ -1,3 +1,4 @@
+using Acr.UserDialogs;
 using Croni.Data;
 using Croni.Data.Database;
 using Croni.Data.Repositories;
@@ -35,7 +36,7 @@ namespace Croni
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("MainPage/NavigationPage/HomeTabbedPage");
+            await NavigationService.NavigateAsync($"{nameof(ViewName.MainPage)}/NavigationPage/{nameof(ViewName.HomeTabbedPage)}?selectedTab={nameof(ViewName.CategoriesPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -53,12 +54,14 @@ namespace Croni
             containerRegistry.RegisterSingleton<ITransactionRepository, TransactionRepository>();
             containerRegistry.RegisterSingleton<IAccountRepository, AccountRepository>();
 
+            containerRegistry.RegisterSingleton<IUserDialogs>(sp => UserDialogs.Instance);
             containerRegistry.RegisterSingleton<IAccountService, AccountService>();
 
             containerRegistry.RegisterForNavigation<DashboardPage, DashboardPageViewModel>();
             containerRegistry.RegisterForNavigation<AccountsPage, AccountsPageViewModel>();
             containerRegistry.RegisterForNavigation<TransactionsPage, TransactionsPageViewModel>();
             containerRegistry.RegisterForNavigation<CategoriesPage, CategoriesPageViewModel>();
+            containerRegistry.RegisterForNavigation<NewAccountPage, NewAccountPageViewModel>();
         }
     }
 }

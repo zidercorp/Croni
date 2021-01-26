@@ -19,16 +19,16 @@ namespace Croni.Converters
 
                 switch (viewName)
                 {
-                    case ViewName.Accounts:
+                    case ViewName.AccountsPage:
                         icon = FASolidFontFamily.Plus;
                         break;
-                    case ViewName.Categories:
+                    case ViewName.CategoriesPage:
                         icon = FASolidFontFamily.Edit;
                         break;
-                    case ViewName.Transactions:
+                    case ViewName.TransactionsPage:
                         icon = FASolidFontFamily.Search;
                         break;
-                    case ViewName.Dashboard:
+                    case ViewName.DashboardPage:
                         icon = FASolidFontFamily.Calendar;
                         break;
                 }
